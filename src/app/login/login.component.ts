@@ -1,23 +1,36 @@
-import { Component } from "@angular/core";
-import { from } from "rxjs";
+import { Component, effect } from "@angular/core";
 
 @Component({
-  standalone: true,
   selector: "app-login",
   imports: [],
   templateUrl: "./login.component.html",
-  styleUrl: "./login.component.scss",
+  styleUrls: ["./login.component.css", "./login.component.scss"],
 })
 export class LoginComponent {
-  LoginPage: boolean = true;
-  btnName: string = "ShowLoginpage";
-  handleLoginpage() {
-    this.LoginPage = !this.LoginPage;
-    this.btnName = "showRegiaterPage";
+  email: string = "";
+  password: string = "";
+  yourEmail: string = "ram@gmail.com";
+  yourPassword: string = "123";
+  loginDisable = false;
+
+  useremail(event: Event) {
+    let Email = (event.target as HTMLInputElement).value;
+    this.email = Email;
+  }
+  userpassword(event: Event) {
+    let Password = (event.target as HTMLInputElement).value;
+    this.password = Password;
   }
 
-  color: string = "allmixed";
-  handlecolors(val: string) {
-    this.color = val;
+  check() {
+    if (this.email == this.yourEmail && this.password == this.yourPassword) {
+      alert("Login Fine");
+    } else {
+      alert("LoginFailed");
+      this.loginDisable = true;
+      setTimeout(() => {
+        this.loginDisable = false;
+      }, 5000);
+    }
   }
 }

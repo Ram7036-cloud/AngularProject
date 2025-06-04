@@ -1,130 +1,14 @@
-<p>login works!</p>
-<br><br>
-<button type="button" style="background-color:lch(47.9% 75.07 3.59);" class="btn" (click)="handlecolors('allmixed')">
-
-</button>
-
-<button type="button" class="btn btn-danger" (click)="handlecolors('red')">
-</button>
-<button type="button" class="btn btn-primary" (click)="handlecolors('primary')">
-</button>
-<button type="button" class="btn btn-secondary" (click)="handlecolors('secondary')">
-
-</button>
-<br><br><br>
-
-<!-- Button to Open the Modal -->
-@switch (color) {
-@case ('primary') {
-<button type="button" class="btn btn-primary" (click)="handleLoginpage()">
-  {{ btnName}}</button>}
-@case ('red') {
-<button type="button" class="btn btn-danger" (click)="handleLoginpage()">
-  {{ btnName}}</button>
-}
-@case ('secondary') {
-<button type="button" class="btn btn-secondary" (click)="handleLoginpage()">
-  {{ btnName}}</button>
-}
-@case ('allmixed') {
-<button type="button" style="background-color: lch(46.9% 77.56 345.79); " class="btn"
-  (click)="handleLoginpage()">{{btnName}}</button>
-}
-}
-
-
-
-
-
-
-<!-- Login Modal -->
-@if(LoginPage){
-<div class="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
-  <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
-    <h2 class="mb-4 text-center">Login</h2>
-    <form>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" required />
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter password" required />
-      </div>
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <div>
-          <input type="checkbox" class="form-check-input" id="rememberMe" />
-          <label class="form-check-label" for="rememberMe">Remember me</label>
-        </div>
-        <a href="#" class="text-decoration-none small">Forgot password?</a>
-      </div>
-      @switch (color) {
-      @case ('primary') {
-      <button type="submit" class="btn btn-primary w-100">Login</button>
-      }
-      @case ('red') {
-      <button type="button" class="btn btn-danger w-100">Login</button>
-      }
-      @case ('secondary') {
-      <button type="button" class="btn btn-secondary w-100">Login</button>
-      }
-      @case ('allmixed') {
-      <button type="button" style="background-color: lch(48.08% 85.72 30.79);" class="w-100 btn"
-        (click)="handleLoginpage()">Login</button>
-      }
-      }
-    </form>
-    <div class="text-center mt-3">
-      <span class="text-muted">Don't have an account?</span>
-      <a href="#" class="text-primary text-decoration-none">Sign up</a>
-    </div>
+<p> Basic Property</p>
+<div>
+  <div>
+    <label for="email" class="form-label">Enter Email</label>
+    <input type="email" name="email" id="email" class="form-control" (input)="useremail($event)"
+      [disabled]="loginDisable">
   </div>
+  <div>
+    <label for="password" class="form-label">Enter Password</label>
+    <input type="password" name="password" id="password" class="form-control" (input)="userpassword($event)"
+      [disabled]="loginDisable">
+  </div> <br>
+  <button class="btn btn-primary" (click)="check()">Check</button>
 </div>
-}
-@else {
-<div class="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
-  <div class="card shadow p-4" style="max-width: 450px; width: 100%;">
-    <h2 class="mb-4 text-center">Create Account</h2>
-    <form>
-      <div class="mb-3">
-        <label for="name" class="form-label">Full Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" required />
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Create password" required />
-      </div>
-      <div class="mb-3">
-        <label for="confirmPassword" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required />
-      </div>
-      @switch (color) {
-      @case ('primary') {
-      <button type="button" class="btn btn-primary">
-        Register</button>}
-      @case ('red') {
-      <button type="button" class="btn btn-danger">
-        Register</button>
-      }
-      @case ('secondary') {
-      <button type="button" class="btn btn-secondary">
-        Register</button>
-      }
-      @case ('allmixed') {
-      <button type="button" style="background-color: lch(61.97% 81.04 138.03);" class="w-100 btn"
-        (click)="handleLoginpage()">Register</button>
-      }
-      }
-    </form>
-    <div class="text-center mt-3">
-      <span class="text-muted">Already have an account?</span>
-      <a href="#" class="text-primary text-decoration-none">Login</a>
-    </div>
-  </div>
-</div>
-
-}
